@@ -17,10 +17,10 @@ int login(char *stored_username[], char *stored_password[], int users, int retri
 
     do {
         printf("Username: ");
-        scanf("%19s", inp_username);
+        scanf("%19s", inp_username); // use gets
 
         printf("Password: ");
-        scanf("%19s", inp_password);
+        scanf("%19s", inp_password); // use gets
 
         for (int x = 0; x < users; x++) {
             if (strcmp(inp_username, stored_username[x]) == 0 && strcmp(inp_password, stored_password[x]) == 0) {
@@ -211,8 +211,8 @@ int main() {
 
     ------------------------------------------------------------------------------------------------------------------------*/
 
-    char *stored_username[] = {"STUDENT", "ADMIN", "TRAVELER"};
-    char *stored_password[] = {"TAFT2401", "FLYHIGH", "SKYWAY"};
+    char *stored_username[] = {"STUDENT", "ADMIN", "TRAVELER"};  // DONT USE POINTERS
+    char *stored_password[] = {"TAFT2401", "FLYHIGH", "SKYWAY"}; // DONT USE POINTERS
     int retries = 3;
     int users = sizeof(stored_username)/sizeof(stored_username[0]); // Gets the lenght of the 'stored_username' Array to 
                                                                     // determine how many users are available.
@@ -229,12 +229,12 @@ int main() {
 
     ------------------------------------------------------------------------------------------------------------------------*/
 
-    char *flight_ID[] =                 {"FL01",     "FL02",     "FL03",            "FL04",      "FL05"   };
-    char *flight_departure[] =          {"1:00",     "2:00",     "3:00",            "4:00",      "5:00"   };
-    char *flight_arrival[] =            {"6:00",     "7:00",     "8:00",            "9:00",      "10:00"  };
-    char *flight_destination[] =        {"Japan",    "Ewan",     "San pa ba pwede", "bahay",     "doon"   };
-    int flight_seats[] =                {50,         60,         70,                80,          90       };
-    float flight_fare[] =               {10000.00,   20000.00,   30000.00,          40000.00,    50000.00 };
+    char *flight_ID[] =                 {"FL01",     "FL02",     "FL03",            "FL04",      "FL05"   }; // DONT USE POINTERS
+    char *flight_departure[] =          {"1:00",     "2:00",     "3:00",            "4:00",      "5:00"   }; // DONT USE POINTERS
+    char *flight_arrival[] =            {"6:00",     "7:00",     "8:00",            "9:00",      "10:00"  }; // DONT USE POINTERS
+    char *flight_destination[] =        {"Japan",    "Ewan",     "San pa ba pwede", "bahay",     "doon"   }; // DONT USE POINTERS
+    int flight_seats[] =                {50,         60,         70,                80,          90       }; // DONT USE POINTERS
+    float flight_fare[] =               {10000.00,   20000.00,   30000.00,          40000.00,    50000.00 }; // DONT USE POINTERS
     int flights_avail = sizeof(flight_ID)/sizeof(flight_ID[0]); // Gets the lenght of the Flight_ID Array to determine how 
                                                                 // many flights are available.
 
