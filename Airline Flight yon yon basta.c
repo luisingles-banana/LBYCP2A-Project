@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
+//#include "myhead.h"
+
 // strcpy(str1, str2); this string function copies the content of string 2 to string 1.
 // puts(string_var); a string output function. This function displays the string value
 // strlen(str); this function returns the length of the string.
