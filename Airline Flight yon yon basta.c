@@ -1,6 +1,16 @@
 #include <stdio.h>
 #include <string.h>
 
+// strcpy(str1, str2); this string function copies the content of string 2 to string 1.
+// puts(string_var); a string output function. This function displays the string value
+// strlen(str); this function returns the length of the string.
+// strcat(str1, str2); it appends the string2 to the end of string 1.
+// strlwr(str); this string function converts all uppercase letters to lowercase.
+// strupr(str); this string function converts all lowercase letters to uppercase.
+// strrev(str); reverses all the characters in the string.
+// strcmp(str1, str2); compares two strings. If string1>string2, the function returns a positive value; if string 1<string2, the function returns a negative value. If string 1 == string2, the function returns a zero value.
+// strcmpi(str1, str2); same with strcmp() except that lowercase and uppercase letters are treated equal.
+
 int verify_choice(int choice, int uplimit, int dwlimit){
     if (choice < dwlimit || choice > uplimit) {
         return 1; //error
