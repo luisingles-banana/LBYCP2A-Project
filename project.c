@@ -1,18 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 
-//#include "myhead.h"
-
-// strcpy(str1, str2); this string function copies the content of string 2 to string 1.
-// puts(string_var); a string output function. This function displays the string value
-// strlen(str); this function returns the length of the string.
-// strcat(str1, str2); it appends the string2 to the end of string 1.
-// strlwr(str); this string function converts all uppercase letters to lowercase.
-// strupr(str); this string function converts all lowercase letters to uppercase.
-// strrev(str); reverses all the characters in the string.
-// strcmp(str1, str2); compares two strings. If string1>string2, the function returns a positive value; if string 1<string2, the function returns a negative value. If string 1 == string2, the function returns a zero value.
-// strcmpi(str1, str2); same with strcmp() except that lowercase and uppercase letters are treated equal.
-
 int flights_selected[10];      
 int flight_tickets[10];        
 float flight_price[10];        
@@ -34,10 +22,10 @@ int login(char *stored_username[], char *stored_password[], int users, int retri
 
     do {
         printf("Username: ");
-        scanf("%19s", inp_username);
+        scanf("%19s", inp_username); //use fgets or gets
 
         printf("Password: ");
-        scanf("%19s", inp_password);
+        scanf("%19s", inp_password); //use fgets or gets
 
         for (int x = 0; x < users; x++) {
             if (strcmp(inp_username, stored_username[x]) == 0 && strcmp(inp_password, stored_password[x]) == 0) {
@@ -330,24 +318,32 @@ int main() { //LKMI
 
         switch (option){
             case 1:
-                printf("You chose option 1!\n\n");
+                //printf("You chose option 1!\n\n");
                 flight_info(flights_avail, flight_ID, 
                             flight_departure, flight_arrival, 
                             flight_destination, flight_seats, 
                             flight_fare);
 
-                printf("Press any key to continue.");
-                getchar(); //tinuro ba ni sir toh? Doesnt work
+                while (1){
+                    printf("Input '0' to continue.");
+                    scanf("%d", &dump);
+                    if (dump == 0){
+                        break;
+                    } else {
+                        printf("Invalid Input!\n");
+                        continue;
+                    }
+                }
                 break;
             case 2:
-                printf("You chose option 2!\n\n");
+                //printf("You chose option 2!\n\n");
                 flight_reservation(flights_avail, flight_ID, 
                                    flight_departure, flight_arrival, 
                                    flight_destination, flight_seats, 
                                    flight_fare);
                 break;
             case 3: // LKMI
-    			printf("You chose option 3!\n\n");
+    			//printf("You chose option 3!\n\n");
     			transaction_summary(flight_ID, flight_destination,
                         flight_departure, flight_arrival,
                         flight_seats, flight_fare);
