@@ -89,7 +89,7 @@ void flight_reservation(int flights_avail, char flight_ID[][10],
             for (int i = 0; i < flights_selected_index; i++) {
                 int idx = flights_selected[i] - 1;
                 printf("%-5d %-8s %-8s %-8s %-20s %-10d %-10.2f %-10.2f\n",
-                    i,
+                    i + 1,
                     flight_ID[idx],
                     flight_departure[idx],
                     flight_arrival[idx],
@@ -111,6 +111,11 @@ void flight_reservation(int flights_avail, char flight_ID[][10],
         // Exiting
         if (exit == 0) break;
 
+        if (exit == 1 && flights_selected_index == flights_avail){
+            printf("You Already Have All Flights!");
+            continue;
+        }
+
         // Remove Flight
         if (exit == 2){
             if (flights_selected_index == 0){
@@ -118,29 +123,33 @@ void flight_reservation(int flights_avail, char flight_ID[][10],
                 continue;
             }
 
-            int rem;
-            printf("Enter reservation number to remove (1-%d): ", flights_selected_index);
-            scanf("%d", &rem);
+            while (1){
+                int rem;
+                printf("Enter reservation number to remove (1-%d): ", flights_selected_index);
+                scanf("%d", &rem);
 
-            if (verify_choice(rem, flights_selected_index, 1)){
-                printf("Invalid Input!\n");
-                continue;
+                if (verify_choice(rem, flights_selected_index, 1)){
+                    printf("Invalid Input!\n");
+                    continue;
+                }
+
+                rem = rem - 1;  // convert to index
+
+                // restore seats
+                flight_seats[flights_selected[rem] - 1] += flight_tickets[rem];
+
+                // shift everything left to fill the gap
+                for (int i = rem; i < flights_selected_index - 1; i++){
+                    flights_selected[i] = flights_selected[i + 1];
+                    flight_tickets[i]   = flight_tickets[i + 1];
+                    flight_price[i]     = flight_price[i + 1];
+                }
+
+                (flights_selected_index)--;
+                printf("Reservation removed!\n");
+                break;
             }
 
-            rem = rem - 1;  // convert to index
-
-            // restore seats
-            flight_seats[flights_selected[rem] - 1] += flight_tickets[rem];
-
-            // shift everything left to fill the gap
-            for (int i = rem; i < flights_selected_index - 1; i++){
-                flights_selected[i] = flights_selected[i + 1];
-                flight_tickets[i]   = flight_tickets[i + 1];
-                flight_price[i]     = flight_price[i + 1];
-            }
-
-            (flights_selected_index)--;
-            printf("Reservation removed!\n");
             continue;
         }
 
